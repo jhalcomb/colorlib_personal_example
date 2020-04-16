@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content%}
+			<!-- start banner Area -->
+			<!--<section class="about-banner">
+				<div class="container">				
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Gallery				
+							</h1>	
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="pictures.html"> Gallery</a></p>
+						</div>	
+					</div>
+				</div>
+			</section>-->
+			<!-- End banner Area -->	
+				<!-- Start portfolio-area Area -->
+            <section class="portfolio-area section-gap" id="portfolio">
+                <div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-70 col-lg-8">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">{{big_title}}</h1>
+		                        <p>~~ May 7, 2020 ~~</p>
+		                    </div>
+		                </div>
+		            </div>
+                    <div class="filters">
+                        <ul>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".vector">First Look</li>
+                            <li data-filter=".raster">Ceremony</li>
+                            <li data-filter=".ui">Family</li>
+                            <li data-filter=".printing">Reception</li>
+                        </ul>
+                    </div>
+                    <div class="filters-content">
+                    	    {{ pagination.info }}
+                    	    {{ pagination.links }} <br>
+                        <div class="row grid">
+                            {% for image_name in image_names %}
+                            <div class="single-portfolio col-sm-4 all raster">
+                            	<div class="relative">
+	                            	<div class="thumb">
+	                            		<div class="overlay overlay-bg"></div>
+                                        <img class="image img-fluid" src="{{ url_for('send_image', filename=image_name) }}">
+	                            	</div>
+									<a href={{ url_for('send_image', filename=image_name) }} class="img-pop-up">	
+									  <div class="middle">
+									    <div class="text align-self-center d-flex"><img src="{{ url_for('static', filename='img/preview.png') }}" alt=""></div>
+									  </div>
+								</a>                              		
+                            	</div>
+								<div class="p-inner">
+								    {{image_name}}
+									<!--<div class="cat">vector</div>-->
+								</div>					                               
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {{ pagination.links }}
+                </div>
+            </section>
+            <!-- End portfolio-area Area -->
+
+
+
+
+
+{% endblock %}         
